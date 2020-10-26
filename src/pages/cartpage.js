@@ -3,7 +3,7 @@ import Cart from '../features/cart'
 
 export default function CartPage(props) {
   return <div>
-    <h2>Meu Carrinho</h2>
-    <Cart />
-  </div>
+            <h2>Meu Carrinho</h2>
+            <Cart />
+          </div>
 }

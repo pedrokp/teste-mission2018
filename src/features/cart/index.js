@@ -2,10 +2,11 @@ import React from 'react'
 import { connect } from  'react-redux'
 
 const sort = (items) => {
-  return items.sort((a, b) => a.id < b.id)
+  return items.sort((a, b) => b.id.localeCompare(a.id))
 }
 
 function Cart(props) {
+
   return <table>
     <thead>
       <tr>
@@ -19,8 +20,8 @@ function Cart(props) {
     </thead>
     <tbody>
       {
-        sort(props.cart).map(item => <tr>
-          <td key={item.id}>{ item.name } | </td> 
+        sort(props.cart).map(item => <tr key={item.id}>
+          <td>{ item.name } | </td> 
           <td>{ item.quantity }</td>
           <td> | { item.price }</td>
           <td> | { item.price * item.quantity }</td>
