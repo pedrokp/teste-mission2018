@@ -3,10 +3,15 @@ import ProductListItem from './product-list-item'
 import { connect } from 'react-redux'
 
 function ProductListing(props) {
+  
+  let productlist = JSON.parse(localStorage.getItem("productlist"));
+  if (productlist) {
+
   return <div className='product-listing'>
     {
-      props.products.map( product =>
+      productlist.map(product =>
         <ProductListItem
+          key={product.id}
           product={product}
           addToCart={props.addToCart}
           removeFromCart={props.removeFromCart}
@@ -14,6 +19,10 @@ function ProductListing(props) {
         />)
     }
   </div>
+} 
+else { 
+  return <div> Nenhum produto cadastrado! </div>
+}
 }
 
 function mapStateToProps(state) {
